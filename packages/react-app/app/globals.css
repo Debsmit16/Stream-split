@@ -24,3 +24,90 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ============================================
+   RESPONSIVE DESIGN - Mobile First Approach
+   ============================================ */
+
+/* Mobile (0-479px) */
+@media (max-width: 479px) {
+  h1 { font-size: 2rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 1.5rem !important; }
+  h3 { font-size: 1.25rem !important; }
+  p { font-size: 0.875rem !important; }
+  .max-w-7xl { padding-left: 1rem !important; padding-right: 1rem !important; }
+  input, textarea, select { font-size: 16px !important; }
+  button { padding: 0.75rem 1.5rem !important; font-size: 0.875rem !important; }
+  .border-2 { padding: 1rem !important; }
+  nav { padding: 0.75rem 1rem !important; }
+  .grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+  .max-w-md { max-width: 100% !important; margin: 1rem !important; }
+  .overflow-x-auto { font-size: 0.75rem !important; }
+  table { min-width: 100% !important; }
+  td, th { padding: 0.5rem !important; }
+}
+
+/* Tablet (480px - 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+  h1 { font-size: 3rem !important; }
+  h2 { font-size: 2rem !important; }
+  .max-w-7xl { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+  .grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important; }
+  .max-w-md { max-width: 28rem !important; }
+  button { padding: 1rem 2rem !important; }
+}
+
+/* Large Desktop (1280px+) */
+@media (min-width: 1280px) {
+  .max-w-7xl { max-width: 1280px; }
+}
+
+/* Ultra-wide (1536px+) */
+@media (min-width: 1536px) {
+  .max-w-7xl { max-width: 1536px; }
+}
+
+/* PWA Standalone mode */
+@media (display-mode: standalone) {
+  body { user-select: none; -webkit-user-select: none; }
+  nav { padding-top: max(1rem, env(safe-area-inset-top)); }
+  .min-h-screen { min-height: 100vh; min-height: -webkit-fill-available; }
+}
+
+/* Landscape mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+  h1 { font-size: 2.5rem !important; }
+  nav { padding: 0.5rem 1rem !important; }
+  section { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  button, a, input[type="submit"] { min-height: 44px; min-width: 44px; }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .border { border-width: 0.5px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Force dark mode */
+@media (prefers-color-scheme: light) {
+  body { background: #0a0a0a; color: #ededed; }
+}
+
+/* Print styles */
+@media print {
+  .fixed, nav, button { display: none !important; }
+  body { background: white; color: black; }
+}
+

@@ -18,6 +18,8 @@ coverage.json
 # Build outputs
 dist/
 build/
+.next/
+out/
 
 # IDE
 .vscode/
@@ -33,3 +35,15 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# Testing
+.turbo
+
+# PWA
+**/public/workbox-*.js
+**/public/sw.js.map
+**/public/workbox-*.js.map
+
+# Temporary files
+*.tmp
+*.temp
