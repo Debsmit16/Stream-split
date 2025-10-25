@@ -31,8 +31,9 @@ export default function WorkerDashboard() {
     setStars(generatedStars);
   }, []);
 
-  // State to store the stream ID (using 0 for now since we need employer to tell us)
-  const [streamId] = useState<bigint>(BigInt(0));
+  // State to store the stream ID - user can input which stream to check
+  const [streamId, setStreamId] = useState<bigint>(BigInt(0));
+  const [streamIdInput, setStreamIdInput] = useState<string>('0');
 
   // Fetch stream info
   const { data: streamInfo } = useReadContract({
@@ -436,6 +437,36 @@ export default function WorkerDashboard() {
               {isWithdrawing ? '[PROCESSING...]' : '[[ WITHDRAW ALL ]]'}
             </button>
           </div>
+        </div>
+
+        {/* Stream ID Input */}
+        <div className="border-2 border-cyan-500/50 bg-black/50 backdrop-blur-sm p-6 mb-8 relative">
+          <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyan-500"></div>
+          <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-purple-500"></div>
+          <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-purple-500"></div>
+          <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyan-500"></div>
+          
+          <label className="block text-sm font-mono text-cyan-300 mb-2">
+            &gt; STREAM ID (Ask your employer for this)
+          </label>
+          <div className="flex gap-4">
+            <input
+              type="number"
+              value={streamIdInput}
+              onChange={(e) => setStreamIdInput(e.target.value)}
+              className="flex-1 px-4 py-3 bg-black/50 border border-cyan-500/50 text-white font-mono focus:outline-none focus:border-cyan-400 focus:shadow-[0_0_10px_rgba(0,255,255,0.5)]"
+              placeholder="Enter stream ID (e.g., 0, 1, 2...)"
+            />
+            <button
+              onClick={() => setStreamId(BigInt(streamIdInput || '0'))}
+              className="px-6 py-3 border-2 border-cyan-500 bg-cyan-500/20 text-cyan-300 font-mono font-bold hover:bg-cyan-500/30 transition-all"
+            >
+              [[ LOAD STREAM ]]
+            </button>
+          </div>
+          <p className="text-xs text-gray-500 font-mono mt-2">
+            &gt; Current Stream ID: {streamId.toString()}
+          </p>
         </div>
 
         <div className="border-2 border-cyan-500/50 bg-black/70 backdrop-blur-sm p-8 relative">
