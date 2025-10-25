@@ -31,26 +31,40 @@ export default function WorkerDashboard() {
     setStars(generatedStars);
   }, []);
 
-  // Fetch stream info for the connected worker
-  const { data: streamInfo, refetch } = useReadContract({
+  // State to store the stream ID (using 0 for now since we need employer to tell us)
+  const [streamId] = useState<bigint>(BigInt(0));
+
+  // Fetch stream info
+  const { data: streamInfo } = useReadContract({
     address: STREAM_SPLIT_ADDRESS as `0x${string}`,
     abi: STREAM_SPLIT_ABI,
     functionName: 'getStreamInfo',
-    args: address ? [BigInt(0)] : undefined, // Stream ID 0 - we'll need to iterate through all streams
+    args: [streamId],
     query: {
       enabled: !!address && isLoggedIn,
-      refetchInterval: 1000, // Refetch every second for real blockchain data
+      refetchInterval: 1000,
     }
   });
 
-  // Update current time every second to trigger re-render
+  // Fetch real-time earned amount using calculateEarned
+  const { data: earnedBigInt, refetch } = useReadContract({
+    address: STREAM_SPLIT_ADDRESS as `0x${string}`,
+    abi: STREAM_SPLIT_ABI,
+    functionName: 'calculateEarned',
+    args: [streamId],
+    query: {
+      enabled: !!address && isLoggedIn && !!streamInfo,
+      refetchInterval: 1000, // Update every second for real-time display
+    }
+  });
+
+  // Update current time every second to force UI re-render
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTime(Date.now());
-      refetch(); // Refetch to get updated earned amount from blockchain
     }, 1000);
     return () => clearInterval(interval);
-  }, [refetch]);
+  }, []);
 
   const handleWithdraw = async () => {
     if (!address) return;
@@ -62,7 +76,7 @@ export default function WorkerDashboard() {
         address: STREAM_SPLIT_ADDRESS as `0x${string}`,
         abi: STREAM_SPLIT_ABI,
         functionName: 'withdraw',
-        args: [BigInt(0)], // Stream ID 0
+        args: [streamId],
       });
       toast.success('[SUCCESS] Withdrawal complete!', { id: toastId });
       // Refetch after withdrawal to update balance
@@ -73,10 +87,8 @@ export default function WorkerDashboard() {
     }
   };
 
-  // Get the actual earned amount from blockchain (index 5)
-  const earnedAmount = streamInfo && Array.isArray(streamInfo) && streamInfo.length > 5
-    ? formatEther(streamInfo[5] as bigint)
-    : '0.000000';
+  // Get the earned amount from calculateEarned function
+  const earnedAmount = earnedBigInt ? formatEther(earnedBigInt) : '0.000000';
   
   // Display with 18 decimals to show real-time changes
   const displayEarned = parseFloat(earnedAmount).toFixed(18);
@@ -456,11 +468,11 @@ export default function WorkerDashboard() {
                 </div>
                 <div>
                   <p className="text-gray-500 text-xs mb-1">&gt; TOTAL DEPOSITED</p>
-                  <p className="text-purple-300">{parseFloat(formatEther(streamInfo[3] as bigint)).toFixed(6)} CELO</p>
+                  <p className="text-purple-300">{parseFloat(formatEther(streamInfo[5] as bigint)).toFixed(6)} CELO</p>
                 </div>
                 <div>
                   <p className="text-gray-500 text-xs mb-1">&gt; WITHDRAWN</p>
-                  <p className="text-purple-300">{parseFloat(formatEther(streamInfo[4] as bigint)).toFixed(6)} CELO</p>
+                  <p className="text-purple-300">{parseFloat(formatEther(streamInfo[6] as bigint)).toFixed(6)} CELO</p>
                 </div>
                 <div>
                   <p className="text-gray-500 text-xs mb-1">&gt; CURRENT EARNED</p>
