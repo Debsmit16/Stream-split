@@ -43,8 +43,9 @@
 
 ## 🚀 Live Demo
 
-- **Frontend**: [Coming Soon - Vercel Deployment]
-- **Contract**: `0x28f8aE58a76aEe9024e4a823af429831c6173029` (Celo Alfajores Testnet)
+- **Frontend**: Deploy to Vercel - See [QUICK_DEPLOY.md](./QUICK_DEPLOY.md)
+- **Contract (Testnet)**: `0x28f8aE58a76aEe9024e4a823af429831c6173029` (Celo Alfajores)
+- **Contract (Mainnet)**: Not yet deployed - See [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)
 
 ## 🛠️ Tech Stack
 
@@ -336,7 +337,21 @@ This project is open source and available under the [MIT License](LICENSE).
 - [x] Retro-futuristic UI
 - [x] PWA implementation
 - [x] Responsive design
-- [ ] Vercel deployment
+- [ ] **Vercel deployment** - [Quick Guide](./QUICK_DEPLOY.md)
+- [ ] **Mainnet deployment** - [Full Guide](./DEPLOYMENT_GUIDE.md)
+- [ ] Multi-token support (CELO, cUSD, cEUR)
+- [ ] Stream scheduling
+- [ ] Email notifications
+
+---
+
+## 🚀 Quick Deploy
+
+**Ready to deploy?** Check out:
+- 📘 [QUICK_DEPLOY.md](./QUICK_DEPLOY.md) - 5-minute Vercel deployment
+- 📗 [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md) - Complete production guide
+
+---
 - [ ] Mainnet deployment
 - [ ] Multi-stream support
 - [ ] Push notifications

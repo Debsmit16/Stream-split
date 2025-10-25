@@ -1,0 +1,8 @@
+{
+  "buildCommand": "cd packages/react-app && npm install && npm run build",
+  "outputDirectory": "packages/react-app/.next",
+  "devCommand": "cd packages/react-app && npm run dev",
+  "installCommand": "npm install --prefix packages/react-app",
+  "framework": null,
+  "regions": ["iad1"]
+}
