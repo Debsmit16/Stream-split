@@ -3,7 +3,7 @@ import { celoAlfajores, celo } from 'wagmi/chains';
 
 export const config = getDefaultConfig({
   appName: 'StreamSplit',
-  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || 'YOUR_PROJECT_ID',
+  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || 'a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6',
   chains: [celoAlfajores, celo],
   ssr: true,
 });
