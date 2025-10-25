@@ -1,0 +1,19 @@
+{
+  "name": "stream-split",
+  "version": "1.0.0",
+  "description": "Real-time salary streaming on Celo blockchain",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=packages/react-app",
+    "build": "npm run build --workspace=packages/react-app",
+    "hardhat:compile": "npm run compile --workspace=packages/hardhat",
+    "hardhat:deploy": "npm run deploy --workspace=packages/hardhat",
+    "hardhat:test": "npm run test --workspace=packages/hardhat"
+  },
+  "keywords": ["celo", "blockchain", "salary-streaming", "web3", "hackathon"],
+  "author": "Your Name",
+  "license": "MIT"
+}
