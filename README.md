@@ -7,7 +7,7 @@ Real-time salary streaming dApp on Celo — stream payments per second. Built as
 ## 🚀 Live
 
 - **Frontend:** https://stream-split.vercel.app
-- **Contract (Alfajores testnet):** `0x28f8aE58a76aEe9024e4a823af429831c6173029`
+- **Contract (Alfajores testnet):** https://alfajores.celoscan.io/address/0x28f8aE58a76aEe9024e4a823af429831c6173029
 
 ---
 
