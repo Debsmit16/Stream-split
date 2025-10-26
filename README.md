@@ -99,15 +99,6 @@ MIT
 
 ---
 
-## �️ Screenshots
-
-<!-- Add product screenshots below -->
-![Employer Dashboard](PLACEHOLDER_FOR_EMPLOYER_DASHBOARD_SCREENSHOT)
-![Worker Dashboard](PLACEHOLDER_FOR_WORKER_DASHBOARD_SCREENSHOT)
-![Mobile View](PLACEHOLDER_FOR_MOBILE_VIEW_SCREENSHOT)
-
----
-
 ## 🛠️ Tech Stack
 
 - Next.js 16, React 19, TypeScript 5
