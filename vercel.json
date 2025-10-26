@@ -9,5 +9,8 @@
       "source": "/(.*)",
       "destination": "/"
     }
-  ]
+  ],
+  "github": {
+    "silent": false
+  }
 }
